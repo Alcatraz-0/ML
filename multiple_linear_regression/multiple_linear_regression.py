@@ -3,11 +3,11 @@ import pandas as pd
 import numpy as np 
 import matplotlib.pyplot as plt
 #data regression
-trainset = pd.read_csv(r'C:\Users\anand\Desktop\STUDE\Visual_code\personal\python\ML\regression\multiple linear regression\Train.csv')
+trainset = pd.read_csv(r'Train.csv')
 x_train = trainset.iloc[:, :-1].values
 y_train = trainset.iloc[:, -1].values
 
-testtest = pd.read_csv(r'C:\Users\anand\Desktop\STUDE\Visual_code\personal\python\ML\regression\multiple linear regression\Test.csv')
+testtest = pd.read_csv(r'Test.csv')
 x_test = testtest.iloc[:,:].values
 
 #sometimes using file names works but when it doesn't one can use this method too
@@ -26,7 +26,8 @@ print(regressor_ols.summary())
 obtain = np.append(arr=np.ones((400, 1)).astype(int), values = x_test, axis = 1)
 y_pred_OLS = regressor_ols.predict(obtain)
 import pandas as pd 
-pd.DataFrame(y_pred_OLS).to_csv(r"C:\\multiple linear regression\predict_value.csv")
+pd.DataFrame(y_pred_OLS).to_csv(r"C:\file_path\multiple linear regression\predict_value.csv")
+
 #sometimes using file names works but when it doesn't one can use this method too
 #x_test  = pd.read_csv(r"C:\file_path\python\ML\regression\Linear_X_Test.csv")
 
