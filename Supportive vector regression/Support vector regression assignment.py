@@ -6,9 +6,13 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Importing the dataset
-dataset = pd.read_csv(r"C:\Users\anand\Desktop\STUDE\Visual_code\personal\python\ML\regression\Support vector regression\Car_Purchasing_Data.csv", encoding = "windows-1252")
+dataset = pd.read_csv(r"Car_Purchasing_Data.csv", encoding = "windows-1252")
 X = dataset.iloc[:, [2,3,4,5,6,7]].values
 y = dataset.iloc[:, -1].values
+
+#sometimes using file names works but when it doesn't one can use this method too
+#x_test  = pd.read_csv(r"C:\file_path\python\ML\regression\Linear_X_Test.csv")
+
 
 
 from sklearn.compose import ColumnTransformer
