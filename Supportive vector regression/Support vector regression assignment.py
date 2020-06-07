@@ -58,3 +58,11 @@ for i in range(3):
     plt.xlabel("Features {}".format(i)), plt.ylabel("Expediture")
     plt.legend((actual, estm), ("Actual Values", "Predicted Values"))
     plt.show()
+    
+pred = pd.DataFrame(y_pred.flatten())
+test = pd.DataFrame(y_test.flatten())
+result = pd.concat([pred, test], axis=1)
+
+pd.DataFrame(result).to_csv(r"predicted_values")
+#sometimes using file names works but when it doesn't one can use this method too
+#x_test  = pd.read_csv(r"C:\file_path\python\ML\regression\Linear_X_Test.csv")
