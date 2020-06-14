@@ -8,10 +8,11 @@ from sklearn.preprocessing import StandardScaler
 
 #importing the data set 
 
-dataset = pd.read_csv(r"C:\Users\anand\Desktop\STUDE\Visual_code\personal\python\ML\regression\End assignment regression\datasets_88705_204267_Real estate.csv")
+dataset = pd.read_csv(r"C:\\python\ML\regression\End assignment regression\datasets_88705_204267_Real estate.csv")
 x = dataset.iloc[:,1:-1]
 y = dataset.iloc[:,-1]
-
+#sometimes using file names works but when it doesn't one can use this method too
+#x_test  = pd.read_csv(r"C:\file_path\python\ML\regression\Linear_X_Test.csv")
 
 #plotting the findings 
 #relation of price with metro station 
@@ -176,7 +177,10 @@ test = pd.DataFrame(y_test.flatten())
 result = pd.concat([lin_pred, mult_pred, svm_pred, poly_pred, dtr_pred, rfr_pred, test], axis=1)
 
 #exporting to csv
-pd.DataFrame(result).to_csv(r"C:\Users\anand\Desktop\STUDE\Visual_code\personal\python\ML\regression\End assignment regression\predicted_values.csv")
+pd.DataFrame(result).to_csv(r"C:\\python\ML\regression\End assignment regression\predicted_values.csv")
+#sometimes using file names works but when it doesn't one can use this method too
+#x_test  = pd.read_csv(r"C:\file_path\python\ML\regression\Linear_X_Test.csv")
+
 
 #Train vs Prediction(Using linear regression)
 ones = []
