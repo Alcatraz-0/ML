@@ -11,8 +11,10 @@ from sklearn.preprocessing import StandardScaler
 dataset = pd.read_csv(r"C:\\python\ML\regression\End assignment regression\datasets_88705_204267_Real estate.csv")
 x = dataset.iloc[:,1:-1]
 y = dataset.iloc[:,-1]
+
 #sometimes using file names works but when it doesn't one can use this method too
 #x_test  = pd.read_csv(r"C:\file_path\python\ML\regression\Linear_X_Test.csv")
+
 
 #plotting the findings 
 #relation of price with metro station 
@@ -75,10 +77,11 @@ regressor_lin.fit(xt_train, yt_train)
 #predicting the results and accuracies of linear regression model 
 lin_pred = regressor_lin.predict(xt_test) 
 from sklearn.metrics import mean_squared_error as mse
+from sklearn.metrics import r2_score as r2
 from math import sqrt
 error_linear = mse(yt_test,lin_pred)
 rmse_linear  = sqrt(error_linear)
-r_sq_linear  = regressor_lin.score(xt_train,yt_train)
+r_sq_linear  = r2(yt_test,lin_pred)
 print(f"The rmse of linear regression: {rmse_linear}")
 print(f"The error of linear regression: {error_linear}")
 print(f"The r square of linear regression: {r_sq_linear}")
@@ -101,9 +104,9 @@ y_pred_OLS = regressor_ols.predict(xt_test[:,[0,1,2,3,4]])
 
 
 #predicting the results and accuracies of Multiple linear regression model 
-error_mult = mse(y_test,y_pred_OLS)
-rmse_mult  = sqrt(error_linear)
-r_sq_mult  = regressor_lin.score(x_train,y_train)
+error_mult = mse(y_test,y_pred_OLS)  
+rmse_mult  = sqrt(error_mult)
+r_sq_mult  = r2(y_test,y_pred_OLS)
 print(f"The rmse of Multiple linear regression: {rmse_linear}")
 print(f"The error of Multiple linear regression: {error_linear}")
 print(f"The r square of Multiple linear regression: {r_sq_linear}")
@@ -119,10 +122,17 @@ poly_lin_regressor.fit(x_poly, y_train)
 #predicting polynomial regression
 plr = poly_lin_regressor.predict(poly_regresssor.fit_transform([[2013.583,17.4,6488.021,1,24.95719,121.47353]]))
 y_pred_poly = poly_lin_regressor.predict(poly_regresssor.fit_transform(x_test))
-
 print(f"The the predicted value using polynomial regression  {plr} ")
 #[[2013.1583,17.4,6488.021,1,24.95719,121.47353]]
 
+
+#predicting the results and accuracies of polynomial regression model 
+error_poly = mse(y_test,y_pred_poly)  
+rmse_poly  = sqrt(error_poly)
+r_sq_poly  = r2(y_test,y_pred_poly) 
+print(f"The rmse of polynomial regression: {rmse_poly}")
+print(f"The error of polynomial regression: {error_poly}")
+print(f"The r square of polynomial regression: {r_sq_poly}")
 
 # Fitting the support vector regression model 
 from sklearn.svm import SVR
@@ -132,6 +142,15 @@ regressor_svm.fit(xt_train, yt_train)
 #predicting support vector regression model
 y_pred_svm = regressor_svm.predict(x_test)
 y_pred_svm = y_pred_svm.reshape(-1,1)
+
+
+#predicting the results and accuracies of support vector regression model 
+error_svm = mse(y_test,y_pred_svm)  
+rmse_svm  = sqrt(error_svm)
+r_sq_svm  = r2(y_test,y_pred_svm)
+print(f"The rmse of support vector regression: {rmse_svm}")
+print(f"The error of support vector regression: {error_svm}")
+print(f"The r square of support vector regression: {r_sq_svm}")
 
 
 
@@ -145,6 +164,15 @@ dtr = regressor_dtr.predict([[2013.583,17.4,6488.021,1,24.95719,121.47353]])
 print(f"The the predicted value using decision tree regression   {dtr} ")
 y_pred_dtr = regressor_dtr.predict(x_test)
 
+#predicting the results and accuracies of decision tree regression  model 
+error_dtr = mse(y_test,y_pred_dtr)  
+rmse_dtr  = sqrt(error_dtr)
+r_sq_dtr  = r2(y_test,y_pred_dtr)  
+print(f"The rmse of decision tree regression: {rmse_dtr}")
+print(f"The error of decision tree regression: {error_dtr}")
+print(f"The r square of decision tree regression: {r_sq_dtr}")
+
+
 #fitting Random Forest regression 
 from sklearn.ensemble import RandomForestRegressor
 regressor_rfr = RandomForestRegressor(n_estimators=10 ,random_state = 0)
@@ -155,6 +183,13 @@ rfr = regressor_rfr.predict([[2013.583,17.4,6488.021,1,24.95719,121.47353]])
 print(f"The the predicted value using Random Forest Regression   {rfr} ")
 y_pred_rfr = regressor_rfr.predict(x_test)
 
+#predicting the results and accuracies of Random Forest regression  model 
+error_rfr = mse(y_test,y_pred_rfr)  
+rmse_rfr  = sqrt(error_rfr)
+r_sq_rfr  = r2(y_test,y_pred_rfr)
+print(f"The rmse of Random Forest regression: {rmse_rfr}")
+print(f"The error of Random Forest regression: {error_rfr}")
+print(f"The r square of Random Forest regression: {r_sq_rfr}")
 
 
 #Applying inverse and type conversions to expost in csv file
@@ -178,6 +213,7 @@ result = pd.concat([lin_pred, mult_pred, svm_pred, poly_pred, dtr_pred, rfr_pred
 
 #exporting to csv
 pd.DataFrame(result).to_csv(r"C:\\python\ML\regression\End assignment regression\predicted_values.csv")
+
 #sometimes using file names works but when it doesn't one can use this method too
 #x_test  = pd.read_csv(r"C:\file_path\python\ML\regression\Linear_X_Test.csv")
 
