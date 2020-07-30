@@ -4,7 +4,10 @@
 import pandas as pd 
 import numpy as np 
 
-dataset = pd.read_csv(r"C:\Users\anand\Desktop\STUDE\Visual_code\personal\python\ML\Clustering\week 08 assignment\datasets_721951_1255613_Country-data.csv")
+dataset = pd.read_csv(r"datasets_721951_1255613_Country-data.csv")
+
+'''sometimes using file names works but when it doesn't one can use this method too
+x_test  = pd.read_csv(r"C:\file_path\python\ML\regression\Linear_X_Test.csv")'''
 
 
 #Child mortality and healthcare 
